@@ -1,0 +1,42 @@
+header {
+    max-width: 1728px;
+    margin: 0 auto;
+    padding: 0 12px;
+    position: fixed;
+    top: 0em;
+
+    .navbar-nav {
+        p {
+            color: $primary;
+        }
+    }
+
+    .material-symbols-outlined {
+        padding: 6px;
+    }
+
+    .border-fix {
+        border-bottom: 1px solid $primary;
+
+        @include media-breakpoint-up(lg) {
+            border-bottom: none;
+            border-right: 1px solid $primary;
+        }
+    }
+
+    .down {
+        height: 0;
+        overflow: hidden;
+        transition: all 400ms;
+    }
+
+    .up {
+        transition: all 400ms;
+        height: 5em;
+    }
+
+    .box {
+        width: 100%;
+        height: 128vh;
+    }
+}
