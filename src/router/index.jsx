@@ -9,6 +9,7 @@ import AboutPage from "../pages/AboutPage"
 import SotriesPage from "../pages/StoriesPage"
 import FAQ from "../pages/FAQ"
 import LoginPage from "../pages/LoginPage"
+import AdminPage from "../pages/AdminPage"
 
 const router = createHashRouter([
     {
@@ -52,8 +53,11 @@ const router = createHashRouter([
     {
         path: 'login',
         element: <LoginPage />
+    },
+    {
+        path: 'admin',
+        element: <AdminPage />
     }
-
 ])
 
 export default router

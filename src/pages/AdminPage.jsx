@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 
-function NotFound() {
+
+function AdminPage() {
     return (
         <div className="container">
-            <h3>頁面不存在</h3>
+            <h3>歡迎來到管理頁面</h3>
             <Link to='/' className="text-accent">回到首頁</Link>
         </div>
 
     )
 }
-export default NotFound;
+export default AdminPage;
