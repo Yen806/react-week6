@@ -10,10 +10,10 @@ function AdminPage() {
                     </NavLink>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto mt-5 mt-lg-0 align-middle">
-                            <NavLink className="nav-link text-center py-6 py-lg-0 px-lg-6 border-0" to='product'>
+                            <NavLink className="nav-link text-center py-6 py-lg-0 px-lg-6 border-0" to='/admin'>
                                 <p className="fs-5 fs-lg-5 fs-xl-4 text-nowrap">管理中心</p>
                             </NavLink>
-                            <NavLink className="nav-link text-center p-0 border-0" to='product'>
+                            <NavLink className="nav-link text-center p-0 border-0" to='/admin'>
                                 <span className="material-symbols-outlined p-0 fs-2 me-3">manage_accounts</span>
                             </NavLink>
                         </div>
