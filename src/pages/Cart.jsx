@@ -112,7 +112,7 @@ function Cart() {
     return (<>
         {cartList.carts?.length > 0 ? (<div>
             <div className="text-end py-3 col-12">
-                <button className="btn btn-outline-danger" type="button" onClick={removeCart}>
+                <button className="btn btn-outline-danger px-5" type="button" onClick={removeCart}>
                     清空購物車
                 </button>
             </div>
@@ -185,7 +185,7 @@ function Cart() {
                 })}
                 <div className="card-footer py-3 fs-5 bg-secondary">
                     <div className="d-flex justify-content-end my-3 align-items-center">
-                        <div className="text-primary">總計：</div>
+                        <div className="text-primary me-3">總計：</div>
                         <div className="btn btn-white text-nowrap fw-bold fs-5" style={{ width: "200px" }}>{`NT$${cartList.total}`}</div>
                     </div>
                 </div>

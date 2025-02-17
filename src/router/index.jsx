@@ -9,7 +9,8 @@ import AboutPage from "../pages/AboutPage"
 import SotriesPage from "../pages/StoriesPage"
 import FAQ from "../pages/FAQ"
 import LoginPage from "../pages/LoginPage"
-import AdminPage from "../pages/AdminPage"
+import AdminPage from "../pages/admin/AdminPage"
+import AdminProducePage from "../pages/admin/AdminProductPage"
 
 const router = createHashRouter([
     {
@@ -56,7 +57,13 @@ const router = createHashRouter([
     },
     {
         path: 'admin',
-        element: <AdminPage />
+        element: <AdminPage />,
+        children : [
+            {
+                index :true,
+                element: <AdminProducePage />
+            }
+        ]
     }
 ])
 

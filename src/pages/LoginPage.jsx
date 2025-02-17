@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import ReactLoading from 'react-loading'
@@ -11,6 +11,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 function LoginPage() {
     const nevigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [isAuth ,setIsAuth] =useState(false)
     const {
         register,
         handleSubmit,
@@ -26,6 +27,7 @@ function LoginPage() {
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
             axios.defaults.headers.common['Authorization'] = token;
             nevigate("/admin")
+            setIsAuth(true);
         } catch (error) {
             alert(error.data)
         } finally {
@@ -33,12 +35,28 @@ function LoginPage() {
         }
     }
 
+    const checkLogin = async () => {
+        try {
+            await axios.post(`${baseUrl}/v2/api/user/check`)
+            setIsAuth(true);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, "$1");
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = token;
+            checkLogin()
+        }
+    }, [])
+
     return (
         <div className="container">
             <div className="row">
-                <div className="card border-0 mx-auto my-lg-11 my-7 col-lg-6">
-                    <div className="card-body mb-5">
-                        <h1 className="card-title fs-2 text-center text-primary mb-11">會員登入</h1>
+                <div className="card border-0 mx-auto my-lg-9 my-7 col-lg-6">
+                    <div className="card-body mb-3">
+                        <h1 className="card-title fs-2 text-center text-primary mb-9">會員登入</h1>
                         <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
                             <Input
                                 register={register}
@@ -70,14 +88,13 @@ function LoginPage() {
                                     }
                                 }}
                             />
-                            <button type='submit' className="btn btn-L btn-primary text-white py-3 mb-5 mx-auto w-50">登入</button>
+                            <button type='submit' className="btn btn-L btn-primary text-white py-3 my-5 mx-auto w-50">登入</button>
                         </form>
                     </div>
                     <div className="d-flex justify-content-center">
-
                         <Link className="card-link me-7 link-primary">忘記密碼?</Link>
                         <Link className="card-link link-primary">註冊會員</Link>
-                    </div>
+                    </div>  
                 </div>
             </div>
 
